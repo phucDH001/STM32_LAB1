@@ -91,84 +91,28 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
-  int sec = 0;
-  int min = 0;
-  int hour = 0;
-  int p_sec = 0, p_min = 0, p_hour = 0;
-  int cnt_sec = sec % 5;
-  int cnt_min = min % 5;
-  int cnt_hour = 0;
+  int counter = 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  if (cnt_sec >= 5) {
-		  cnt_sec = 0;
-		  if (((sec - 1) / 5) % 12 == (min / 5) % 12 || ((sec - 1) / 5) % 12 == hour % 12) {
-			  setNumberOnClock(((sec - 1) / 5) % 12);
-		  }
-		  else {
-			  if (sec == 0 && p_sec / 5 > 0) {
-				  clearNumberOnClock(11);
-			  }
-			  else {
-				  clearNumberOnClock(((sec - 1) / 5) % 12);
-			  }
-		  }
+	  if (counter > 11) {
+		  counter = 0;
+		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, SET);
+		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, SET);
+		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_2, SET);
+		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_3, SET);
+		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, SET);
+		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, SET);
+		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, SET);
+		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, SET);
+		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, SET);
+		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, SET);
+		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_10, SET);
 	  }
-	  if (sec >= 60) {
-		  p_sec = sec - 1;
-		  sec = 0;
-		  min++;
-		  cnt_min++;
-	  }
-	  setNumberOnClock((sec / 5) % 12);
-	  sec++;
-	  cnt_sec++;
-
-	  if (cnt_min >= 5) {
-		  cnt_min = 0;
-		  if (((min - 1) / 5) % 12 == (sec / 5) % 12 ||	((min - 1) / 5) % 12 == hour % 12) {
-			  setNumberOnClock(((min - 1) / 5) % 12);
-		  }
-		  else {
-			  if (min == 0 && p_min / 5 > 0) {
-				  clearNumberOnClock(11);
-			  }
-			  else {
-				  clearNumberOnClock(((min - 1) / 5) % 12);
-			  }
-		  }
-	  }
-	  if (min >= 60) {
-		  p_min = min - 1;
-		  min = 0;
-		  hour++;
-		  cnt_hour++;
-	  }
-	  setNumberOnClock((min / 5) % 12);
-
-	  if (cnt_hour >= 1) {
-		  cnt_hour = 0;
-		  if ((hour - 1) % 12 == (sec / 5) % 12 || (hour - 1) % 12 == (min / 5) % 12) {
-			  setNumberOnClock((hour - 1) % 12);
-		  }
-		  else {
-			  if (hour == 0 && p_hour == 11) {
-				  clearNumberOnClock(11);
-			  }
-			  else {
-				  clearNumberOnClock((hour - 1) % 12);
-			  }
-		  }
-	  }
-	  if (hour >= 12) {
-		  p_hour = hour - 1;
-		  hour = 0;
-	  }
-	  setNumberOnClock(hour % 12);
+	  HAL_GPIO_WritePin(GPIOB, arrPin[counter++], RESET);
 	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 

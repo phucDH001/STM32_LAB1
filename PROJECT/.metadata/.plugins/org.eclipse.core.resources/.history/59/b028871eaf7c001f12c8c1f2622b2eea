@@ -94,7 +94,7 @@ int main(void)
   int sec = 0;
   int min = 0;
   int hour = 0;
-  int p_sec = 0, p_min = 0, p_hour = 0;
+  int p_sec = p_min = p_hour = 0;
   int cnt_sec = sec % 5;
   int cnt_min = min % 5;
   int cnt_hour = 0;
