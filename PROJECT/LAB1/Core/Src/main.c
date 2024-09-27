@@ -49,7 +49,8 @@
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 /* USER CODE BEGIN PFP */
-
+void display7SEG(int num);
+void display7SEG1(int num);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -86,13 +87,16 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
-
+  int counter = 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  if (counter >= 10) counter = 0;
+	  display7SEG(counter++);
+	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -189,7 +193,198 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-
+void display7SEG(int num) {
+	switch (num) {
+		case 0:
+			HAL_GPIO_WritePin(GPIOA, SEG_0_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_1_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_2_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_3_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_4_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_5_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_6_Pin, SET);
+			break;
+		case 1:
+			HAL_GPIO_WritePin(GPIOA, SEG_0_Pin, SET);
+			HAL_GPIO_WritePin(GPIOA, SEG_1_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_2_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_3_Pin, SET);
+			HAL_GPIO_WritePin(GPIOA, SEG_4_Pin, SET);
+			HAL_GPIO_WritePin(GPIOA, SEG_5_Pin, SET);
+			HAL_GPIO_WritePin(GPIOA, SEG_6_Pin, SET);
+			break;
+		case 2:
+			HAL_GPIO_WritePin(GPIOA, SEG_0_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_1_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_2_Pin, SET);
+			HAL_GPIO_WritePin(GPIOA, SEG_3_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_4_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_5_Pin, SET);
+			HAL_GPIO_WritePin(GPIOA, SEG_6_Pin, RESET);
+			break;
+		case 3:
+			HAL_GPIO_WritePin(GPIOA, SEG_0_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_1_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_2_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_3_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_4_Pin, SET);
+			HAL_GPIO_WritePin(GPIOA, SEG_5_Pin, SET);
+			HAL_GPIO_WritePin(GPIOA, SEG_6_Pin, RESET);
+			break;
+		case 4:
+			HAL_GPIO_WritePin(GPIOA, SEG_0_Pin, SET);
+			HAL_GPIO_WritePin(GPIOA, SEG_1_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_2_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_3_Pin, SET);
+			HAL_GPIO_WritePin(GPIOA, SEG_4_Pin, SET);
+			HAL_GPIO_WritePin(GPIOA, SEG_5_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_6_Pin, RESET);
+			break;
+		case 5:
+			HAL_GPIO_WritePin(GPIOA, SEG_0_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_1_Pin, SET);
+			HAL_GPIO_WritePin(GPIOA, SEG_2_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_3_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_4_Pin, SET);
+			HAL_GPIO_WritePin(GPIOA, SEG_5_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_6_Pin, RESET);
+			break;
+		case 6:
+			HAL_GPIO_WritePin(GPIOA, SEG_0_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_1_Pin, SET);
+			HAL_GPIO_WritePin(GPIOA, SEG_2_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_3_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_4_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_5_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_6_Pin, RESET);
+			break;
+		case 7:
+			HAL_GPIO_WritePin(GPIOA, SEG_0_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_1_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_2_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_3_Pin, SET);
+			HAL_GPIO_WritePin(GPIOA, SEG_4_Pin, SET);
+			HAL_GPIO_WritePin(GPIOA, SEG_5_Pin, SET);
+			HAL_GPIO_WritePin(GPIOA, SEG_6_Pin, SET);
+			break;
+		case 8:
+			HAL_GPIO_WritePin(GPIOA, SEG_0_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_1_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_2_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_3_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_4_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_5_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_6_Pin, RESET);
+			break;
+		case 9:
+			HAL_GPIO_WritePin(GPIOA, SEG_0_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_1_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_2_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_3_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_4_Pin, SET);
+			HAL_GPIO_WritePin(GPIOA, SEG_5_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOA, SEG_6_Pin, RESET);
+			break;
+		default:
+			break;
+	}
+}
+void display7SEG1(int num) {
+	switch (num) {
+		case 0:
+			HAL_GPIO_WritePin(GPIOB, LED_1_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_2_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_3_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_4_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_5_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_6_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_7_Pin, SET);
+			break;
+		case 1:
+			HAL_GPIO_WritePin(GPIOB, LED_1_Pin, SET);
+			HAL_GPIO_WritePin(GPIOB, LED_2_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_3_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_4_Pin, SET);
+			HAL_GPIO_WritePin(GPIOB, LED_5_Pin, SET);
+			HAL_GPIO_WritePin(GPIOB, LED_6_Pin, SET);
+			HAL_GPIO_WritePin(GPIOB, LED_7_Pin, SET);
+			break;
+		case 2:
+			HAL_GPIO_WritePin(GPIOB, LED_1_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_2_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_3_Pin, SET);
+			HAL_GPIO_WritePin(GPIOB, LED_4_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_5_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_6_Pin, SET);
+			HAL_GPIO_WritePin(GPIOB, LED_7_Pin, RESET);
+			break;
+		case 3:
+			HAL_GPIO_WritePin(GPIOB, LED_1_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_2_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_3_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_4_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_5_Pin, SET);
+			HAL_GPIO_WritePin(GPIOB, LED_6_Pin, SET);
+			HAL_GPIO_WritePin(GPIOB, LED_7_Pin, RESET);
+			break;
+		case 4:
+			HAL_GPIO_WritePin(GPIOB, LED_1_Pin, SET);
+			HAL_GPIO_WritePin(GPIOB, LED_2_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_3_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_4_Pin, SET);
+			HAL_GPIO_WritePin(GPIOB, LED_5_Pin, SET);
+			HAL_GPIO_WritePin(GPIOB, LED_6_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_7_Pin, RESET);
+			break;
+		case 5:
+			HAL_GPIO_WritePin(GPIOB, LED_1_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_2_Pin, SET);
+			HAL_GPIO_WritePin(GPIOB, LED_3_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_4_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_5_Pin, SET);
+			HAL_GPIO_WritePin(GPIOB, LED_6_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_7_Pin, RESET);
+			break;
+		case 6:
+			HAL_GPIO_WritePin(GPIOB, LED_1_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_2_Pin, SET);
+			HAL_GPIO_WritePin(GPIOB, LED_3_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_4_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_5_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_6_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_7_Pin, RESET);
+			break;
+		case 7:
+			HAL_GPIO_WritePin(GPIOB, LED_1_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_2_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_3_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_4_Pin, SET);
+			HAL_GPIO_WritePin(GPIOB, LED_5_Pin, SET);
+			HAL_GPIO_WritePin(GPIOB, LED_6_Pin, SET);
+			HAL_GPIO_WritePin(GPIOB, LED_7_Pin, SET);
+			break;
+		case 8:
+			HAL_GPIO_WritePin(GPIOB, LED_1_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_2_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_3_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_4_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_5_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_6_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_7_Pin, RESET);
+			break;
+		case 9:
+			HAL_GPIO_WritePin(GPIOB, LED_1_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_2_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_3_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_4_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_5_Pin, SET);
+			HAL_GPIO_WritePin(GPIOB, LED_6_Pin, RESET);
+			HAL_GPIO_WritePin(GPIOB, LED_7_Pin, RESET);
+			break;
+		default:
+			break;
+	}
+}
 /* USER CODE END 4 */
 
 /**
