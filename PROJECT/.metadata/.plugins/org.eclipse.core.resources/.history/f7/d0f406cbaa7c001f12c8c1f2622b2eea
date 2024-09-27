@@ -87,118 +87,15 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
-  int status1 = 1, status2 = 0, status3 = 0, status4 = 0, status5 = 0, status6 = 1;
-  int counter1 = 5, counter2 = 2, counter3 = 3, counter4 = 5, counter5 = 2, counter6 = 3;
+  int counter = 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  switch (status1) {
-	  	  case 1:
-	  		  HAL_GPIO_WritePin(GPIOA, L1_Pin, SET);
-	  		  counter1--;
-	  		  display7SEG(counter1);
-	  		  if (counter1 < 0) {
-	  			  HAL_GPIO_WritePin(GPIOA, L1_Pin, RESET);
-	  			  status1 = 0;
-	  			  counter1 = 5;
-	  			  status3 = 1;
-	  		  }
-	  		  break;
-	  	  case 0:
-	  		  HAL_GPIO_WritePin(GPIOA, L1_Pin, RESET);
-	  		  break;
-	  }
-	  switch (status3) {
-	  	  case 1:
-	  		  HAL_GPIO_WritePin(GPIOA, L3_Pin, SET);
-	  		  counter3--;
-	  		  display7SEG(counter3);
-	  		  if (counter3 < 0) {
-	  			  HAL_GPIO_WritePin(GPIOA, L3_Pin, RESET);
-	  			  status3 = 0;
-	  			  counter3 = 3;
-	  			  status2 = 1;
-	  		  }
-	  		  break;
-	  	  case 0:
-	  		  HAL_GPIO_WritePin(GPIOA, L3_Pin, RESET);
-	  		  break;
-	  }
-	  switch (status2) {
-	  	  case 1:
-	  		  HAL_GPIO_WritePin(GPIOA, L2_Pin, SET);
-	  		  counter2--;
-	  		  display7SEG(counter2);
-	  		  if (counter2 < 0) {
-	  			  HAL_GPIO_WritePin(GPIOA, L2_Pin, RESET);
-	  			  status2 = 0;
-	  			  counter2 = 2;
-	  			  status1 = 1;
-	  			  HAL_GPIO_WritePin(GPIOA, L1_Pin, SET);
-	  			  status1 = 1;
-	  			  counter1--;
-	  			  display7SEG(counter1);
-	  		  }
-	  		  break;
-	  	  case 0:
-	  		  HAL_GPIO_WritePin(GPIOA, L2_Pin, RESET);
-	  		  break;
-	  }
-
-	  switch (status6) {
-	  	  case 1:
-	  		  HAL_GPIO_WritePin(GPIOB, L6_Pin, SET);
-	  		  counter6--;
-	  		  display7SEG1(counter6);
-	  		  if (counter6 < 0) {
-	  			  HAL_GPIO_WritePin(GPIOB, L6_Pin, RESET);
-	  			  status6 = 0;
-	  			  counter6 = 3;
-	  			  status5 = 1;
-	  		  }
-	  		  break;
-	  	  case 0:
-	  		  HAL_GPIO_WritePin(GPIOB, L6_Pin, RESET);
-	  		  break;
-	  }
-	  switch (status5) {
-	  	  case 1:
-	  		  HAL_GPIO_WritePin(GPIOB, L5_Pin, SET);
-	  		  counter5--;
-	  		  display7SEG1(counter5);
-	  		  if (counter5 < 0) {
-	  			  HAL_GPIO_WritePin(GPIOB, L5_Pin, RESET);
-	  			  status5 = 0;
-	  			  counter5 = 2;
-	  			  status4 = 1;
-	  		  }
-	  		  break;
-	  	  case 0:
-	  		  HAL_GPIO_WritePin(GPIOB, L5_Pin, RESET);
-	  		  break;
-	  }
-	  switch (status4) {
-	  	  case 1:
-	  		  HAL_GPIO_WritePin(GPIOB, L4_Pin, SET);
-	  		  counter4--;
-	  		  display7SEG1(counter4);
-	  		  if (counter4 < 0) {
-	  			  HAL_GPIO_WritePin(GPIOB, L4_Pin, RESET);
-	  			  status4 = 0;
-	  			  counter4 = 5;
-	  			  HAL_GPIO_WritePin(GPIOB, L6_Pin, SET);
-	  			  status6 = 1;
-	  			  counter6--;
-	  			  display7SEG1(counter6);
-	  		  }
-	  		  break;
-	  	  case 0:
-	  		  HAL_GPIO_WritePin(GPIOB, L4_Pin, RESET);
-	  		  break;
-	  }
+	  if (counter >= 10) counter = 0;
+	  display7SEG(counter++);
 	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
