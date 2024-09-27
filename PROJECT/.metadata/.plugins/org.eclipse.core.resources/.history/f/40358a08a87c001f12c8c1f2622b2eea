@@ -86,62 +86,13 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
-  int status1 = 1, status2 = 0, status3 = 0;
-  int counter1 = 5, counter2 = 2, counter3 = 3;
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  switch (status1) {
-	  	  case 1:
-	  		  HAL_GPIO_WritePin(GPIOA, LED_RED_Pin, RESET);
-	  		  counter1--;
-	  		  if (counter1 < 0) {
-	  			  HAL_GPIO_WritePin(GPIOA, LED_RED_Pin, SET);
-	  			  status1 = 0;
-	  			  counter1 = 5;
-	  			  status2 = 1;
-	  		  }
-	  		  break;
-	  	  case 0:
-	  		  HAL_GPIO_WritePin(GPIOA, LED_RED_Pin, SET);
-	  		  break;
-	  }
-	  switch (status2) {
-	  	  case 1:
-	  		  HAL_GPIO_WritePin(GPIOA, LED_YELLOW_Pin, RESET);
-	  		  counter2--;
-	  		  if (counter2 < 0) {
-	  			  HAL_GPIO_WritePin(GPIOA, LED_YELLOW_Pin, SET);
-	  			  status2 = 0;
-	  			  counter2 = 2;
-	  			  status3 = 1;
-	  		  }
-	  		  break;
-	  	  case 0:
-	  		  HAL_GPIO_WritePin(GPIOA, LED_YELLOW_Pin, SET);
-	  		  break;
-	  }
-	  switch (status3) {
-	  	  case 1:
-	  		  HAL_GPIO_WritePin(GPIOA, LED_GREEN_Pin, RESET);
-	  		  counter3--;
-	  		  if (counter3 < 0) {
-	  			  HAL_GPIO_WritePin(GPIOA, LED_GREEN_Pin, SET);
-	  			  status3 = 0;
-	  			  counter3 = 3;
-	  			  HAL_GPIO_WritePin(GPIOA, LED_RED_Pin, RESET);
-	  			  status1 = 1;
-	  			  counter1--;
-	  		  }
-	  		  break;
-	  	  case 0:
-	  		  HAL_GPIO_WritePin(GPIOA, LED_GREEN_Pin, SET);
-	  		  break;
-	  }
-	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
