@@ -86,51 +86,13 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
-  int status1 = 1, status2 = 0;
-  int counter1 = 2, counter2 = 2;
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  switch (status1) {
-	  	  case 1:
-	  		  HAL_GPIO_WritePin(GPIOA, LED_RED_Pin, RESET);
-	  		  counter1--;
-	  		  if (counter1 <= 0) {
-	  			  status1 = 0;
-	  			  counter1 = 2;
-	  		  }
-	  		  break;
-	  	  case 0:
-	  		  HAL_GPIO_WritePin(GPIOA, LED_RED_Pin, SET);
-	  		  counter1--;
-	  		  if (counter1 <= 0) {
-	  			  status1 = 1;
-	  			  counter1 = 2;
-	  		  }
-	  		  break;
-	  }
-	  switch (status2) {
-	  	  case 1:
-	  		  HAL_GPIO_WritePin(GPIOA, LED_YELLOW_Pin, RESET);
-	  		  counter2--;
-	  		  if (counter2 <= 0) {
-	  			  status2 = 0;
-	  			  counter2 = 2;
-	  		  }
-	  		  break;
-	  	  case 0:
-	  		  HAL_GPIO_WritePin(GPIOA, LED_YELLOW_Pin, SET);
-	  		  counter2--;
-	  		  if (counter2 <= 0) {
-	  			  status2 = 1;
-	  			  counter2 = 2;
-	  		  }
-	  		  break;
-	  }
-	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
