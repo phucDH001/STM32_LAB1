@@ -86,33 +86,13 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
-  int arrPin[] = {
-  	GPIO_PIN_11, GPIO_PIN_0, GPIO_PIN_1, GPIO_PIN_2, GPIO_PIN_3, GPIO_PIN_4,
-  	GPIO_PIN_5, GPIO_PIN_6, GPIO_PIN_7, GPIO_PIN_8, GPIO_PIN_9, GPIO_PIN_10
-  };
-  int counter = 0;
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  if (counter > 11) {
-		  counter = 0;
-		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, SET);
-		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, SET);
-		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_2, SET);
-		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_3, SET);
-		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, SET);
-		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, SET);
-		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, SET);
-		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, SET);
-		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, SET);
-		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, SET);
-		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_10, SET);
-	  }
-	  HAL_GPIO_WritePin(GPIOB, arrPin[counter++], RESET);
-	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
