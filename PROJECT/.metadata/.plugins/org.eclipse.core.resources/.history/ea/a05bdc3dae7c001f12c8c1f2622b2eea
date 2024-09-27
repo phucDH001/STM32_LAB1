@@ -54,7 +54,6 @@ static void MX_GPIO_Init(void);
 /* USER CODE BEGIN PFP */
 void clearAllClock();
 void setNumberOnClock(int num);
-void clearNumberOnClock(int num);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -226,9 +225,6 @@ void clearAllClock() {
 }
 void setNumberOnClock(int num) {
 	HAL_GPIO_WritePin(GPIOB, arrPin[num], RESET);
-}
-void clearNumberOnClock(int num) {
-	HAL_GPIO_WritePin(GPIOB, arrPin[num], SET);
 }
 /* USER CODE END 4 */
 
